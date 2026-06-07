@@ -25,8 +25,8 @@ export default function ProfilePage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.put("/users/me", form);
-      updateUser(res.data.data);
+      await api.put("/users/me", form);
+      updateUser({ ...user, ...form });
       toast.success("Profile updated");
     } catch {
       toast.error("Failed to update profile");
