@@ -1,16 +1,48 @@
-# React + Vite
+# SplitEasy Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React frontend for SplitEasy — a Splitwise-inspired expense splitting app built in 2 days as a Spreetail internship assignment.
 
-Currently, two official plugins are available:
+## AI Tool Used
+**Claude (claude.ai) — Claude Sonnet 4.6**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live URLs
+- **App:** https://spliteasy-frontend.vercel.app
+- **Backend API:** https://spliteasy-backend-production.up.railway.app/docs
 
-## React Compiler
+## Tech Stack
+| Layer | Technology |
+|---|---|
+| Framework | React + Vite |
+| Styling | Tailwind CSS v3 |
+| State | Zustand (auth) + React Query (server) |
+| Real-time | Socket.io client |
+| Routing | React Router v6 |
+| Deploy | Vercel |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local Setup
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js 18+
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Steps
+```bash
+git clone https://github.com/shriyashsk/spliteasy-frontend
+cd spliteasy-frontend
+npm install
+cp .env.example .env            # Fill in values
+npm run dev                     # Starts at http://localhost:5173
+```
+
+### Environment Variables
+- VITE_API_BASE_URL=https://spliteasy-backend-production.up.railway.app
+- VITE_SOCKET_URL=https://spliteasy-backend-production.up.railway.app
+
+## Features
+- Login with email/password or Google OAuth
+- Create groups and invite members by email
+- Add expenses with 4 split types: equal, unequal, percentage, shares
+- Real-time expense chat (Socket.io)
+- Group-wise and individual balance summaries
+- Record settlements between members
+- Activity feed with edit history
+- Responsive — works on mobile and desktop
