@@ -146,6 +146,16 @@ export default function GroupDetailPage() {
 
   const handleSettle = async (e) => {
     e.preventDefault();
+    console.log("Current user:", user);
+    console.log("Settle form data:", settleForm);
+    if (!user?.id) {
+      toast.error("User not found. Please log in again.");
+      return;
+    }
+    if (!settleForm.paid_to_user_id) {
+      toast.error("Please select a member to pay.");
+      return;
+    }
     try {
       await createSettlement(id, {
         paid_by_user_id: user.id,
@@ -158,8 +168,10 @@ export default function GroupDetailPage() {
       queryClient.invalidateQueries(["balances", id]);
       queryClient.invalidateQueries(["settlements", id]);
       setShowSettle(false);
-    } catch {
-      toast.error("Failed to record settlement");
+    } catch (err) {
+      toast.error(
+        err.response?.data?.detail?.message || "Failed to record settlement",
+      );
     }
   };
 
